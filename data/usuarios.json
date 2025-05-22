@@ -1,0 +1,22 @@
+[
+    {
+      "id": 1,
+      "nombre": "Test",
+      "apellidos": "Uno",
+      "fecha_nacimiento": "1999-04-22",
+      "correo": "test1@example.com",
+      "contraseña": "password1",
+      "foto": "perfil_default.png",
+      "cursos": [1]
+    },
+    {
+      "id": 2,
+      "nombre": "Test",
+      "apellidos": "Dos",
+      "fecha_nacimiento": "2001-08-15",
+      "correo": "test2@example.com",
+      "contraseña": "password2",
+      "foto": "perfil_default.png",
+      "cursos": [1]
+    }
+  ]
