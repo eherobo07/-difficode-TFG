@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teoría | !difficode</title>
+  <link rel="stylesheet" href="../static/css/ejercicio.css" />
+  <link rel="icon" href="../static/img/icon.png" type="image/png" />
+</head>
+
+<body>
+  <!-- ============================
+       HEADER
+  ============================ -->
+  <header>
+      <div class="header-col izquierda">
+    <!-- Botón Volver al curso -->
+    <button id="volver-curso" class="btn-volver">
+      <span class="flecha">&#8594;</span> Volver al curso
+    </button>
+  </div>
+    <div class="header-col centro">
+      <img src="../static/img/logo.png" alt="Logotipo" id="logo" />
+    </div>
+    <div class="header-col derecha" id="login-status">
+      <img src="../static/img/profile/perfil_default.png" alt="Perfil" id="icono-perfil" />
+      <span id="texto-login">Mi perfil</span>
+
+      <!-- Menú desplegable -->
+      <div id="menu-perfil" class="oculto">
+        <ul>
+          <li id="ver-perfil">Ver información personal</li>
+          <li id="ver-curso">Ver mi curso</li>
+          <li id="informar-problema">Informa de un problema</li>
+          <li id="reiniciar-curso">Reiniciar curso</li>
+          <li id="cerrar-sesion">Cerrar sesión</li>
+          <li id="borrar-cuenta" class="peligro">Borrar cuenta</li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+ <!-- ============================
+       CONTENIDO PRINCIPAL (BODY)
+ ============================ -->
+<main class="perfil-layout">
+    <!-- Contenedor del bloque -->
+    <section class="bloque-ejercicio">
+        <div class="cuadro-ejercicio">
+            <!-- Cargar el enunciado como HTML -->
+            <div id="enunciado">
+                {{ enunciado|safe }}
+            </div>
+
+            <!-- Caja de texto para la respuesta -->
+            <textarea id="respuesta" placeholder="Escribe tu respuesta aquí..."></textarea>
+            
+            <!-- Botón Comprobar -->
+            <button id="comprobar-btn" class="btn-comprobar" onclick="validarRespuesta()">Comprobar</button>
+
+            <!-- Mensaje de resultado -->
+            <div id="resultado" class="resultado"></div>
+        </div>
+    </section>
+</main>
+
+  <!-- ============================
+       FOOTER
+  ============================ -->
+  <footer>
+    <p>&copy; 2025 !difficode. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="../static/js/ejercicio.js" defer></script>
+
+</body>
+
+</html>

@@ -1,0 +1,370 @@
+/* ========================
+   PALETA DE COLORES
+======================== */
+:root {
+  --fondo-principal: #4C5760;
+  --fondo-secundario: #93A8AC;
+  --fondo-bloque: #D7CEB2;
+  --elemento-interactivo: #A59E8C;
+  --texto-oscuro: #66635B;
+  --texto-claro: #ffffff;
+  --fuente-principal: 'Inter', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--fuente-principal);
+  background-color: var(--fondo-principal);
+  color: var(--texto-claro);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-image:
+    radial-gradient(circle at 25% 25%, var(--fondo-secundario) 0%, transparent 40%),
+    radial-gradient(circle at 75% 75%, var(--fondo-principal) 0%, transparent 40%);
+  background-size: 400% 400%;
+  animation: ondas 30s ease-in-out infinite;
+}
+
+@keyframes ondas {
+  0%, 100% { background-position: 0% 0%, 100% 100%, 50% 50%; }
+  50% { background-position: 100% 0%, 0% 100%, 50% 30%; }
+}
+
+/* ========================
+   HEADER
+======================== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--fondo-principal);
+  padding: 1rem 2rem;
+  border-bottom: 2px solid var(--texto-oscuro);
+}
+
+.header-col {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-col.izquierda { justify-content: flex-start; }
+.header-col.derecha { justify-content: flex-end; gap: 0.7rem; cursor: pointer; position: relative; }
+
+#logo { height: 50px; }
+
+#icono-perfil {
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--elemento-interactivo);
+}
+
+/* ========================
+   MENÚ DESPLEGABLE PERFIL
+======================== */
+#menu-perfil {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  background-color: var(--fondo-bloque);
+  color: var(--texto-oscuro);
+  border: 1px solid var(--texto-oscuro);
+  border-radius: 8px;
+  width: 180px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  z-index: 50;
+}
+#menu-perfil ul { list-style: none; margin: 0; padding: 0; }
+#menu-perfil li {
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  border-bottom: 1px solid #ccc;
+}
+#menu-perfil li:hover { background-color: var(--fondo-secundario); }
+#menu-perfil.oculto { display: none; }
+
+.peligro {
+  color: #D9534F;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.peligro:hover {
+  color: #B52B27;
+  text-decoration: underline;
+}
+
+/* ========================
+   LAYOUT PRINCIPAL
+======================== */
+.layout {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  flex: 1;
+  min-height: 100%;
+}
+
+#barra-lateral {
+  background-color: var(--fondo-secundario);
+  padding: 2rem 1rem;
+  border-right: 2px solid var(--texto-oscuro);
+}
+
+#barra-lateral h2 {
+  font-size: 1.5rem;
+  color: var(--texto-oscuro);
+  margin-bottom: 1rem;
+}
+
+#barra-lateral ul {
+  list-style: none;
+  padding: 0;
+}
+#barra-lateral li {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: var(--texto-claro);
+}
+#barra-lateral li::before {
+  content: "➤";
+  margin-right: 0.5em;
+}
+.bloque-lecciones {
+  flex: 1;
+  background-color: var(--fondo-secundario);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  color: var(--texto-oscuro);
+  margin-bottom: 1rem; /* Separación entre las cajas */
+  border: 2px solid var(--borde-color, rgba(0, 0, 0, 0.1)); /* Borde suave y sutil */
+}
+
+.bloque-lecciones h2 {
+  font-size: 1.5rem;
+  color: var(--texto-oscuro);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.burbujas {
+  display: flex;
+  flex-wrap: wrap;  /* Las burbujas se ajustan si el espacio no es suficiente */
+  justify-content: space-evenly;  /* Espacio entre burbujas, distribuidas equitativamente */
+  gap: 1rem;  /* Espacio entre burbujas */
+}
+
+.burbujas .bubble {
+  flex: 1 1 calc(33% - 1rem);  /* Cada burbuja ocupa un 33% menos el gap */
+  min-width: 150px;  /* Tamaño mínimo */
+  max-width: 300px;  /* Tamaño máximo */
+  background-color: var(--fondo-burbuja);
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease;  /* Efecto al pasar el mouse */
+}
+
+.burbujas .bubble:hover {
+  transform: translateY(-5px);  /* Efecto de elevación al pasar el mouse */
+}
+
+
+/* ========================
+   SECCIÓN DEL CURSO
+======================== */
+main {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  overflow-y: auto;
+}
+
+.modulo {
+  background-color: var(--fondo-bloque);
+  padding: 1.5rem;
+  border-radius: 12px;
+  color: var(--texto-oscuro);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.modulo h2 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.lecciones {
+  margin-top: 1rem;
+}
+.lecciones h3 {
+  margin-bottom: 0.8rem;
+  font-size: 1.1rem;
+}
+
+.burbujas {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.burbuja {
+  width: 45px;
+  height: 45px;
+  background-color: var(--elemento-interactivo);
+  color: var(--texto-claro);
+  font-weight: bold;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s;
+}
+
+.burbuja:hover {
+  transform: scale(1.1);
+}
+
+/* Colores según estado */
+.burbuja.bloqueado {
+  background-color: #999;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.burbuja.correcto {
+  background-color: #4CAF50;
+}
+
+.burbuja.incompleto {
+  background-color: #FFC107;
+}
+
+/* ========================
+   FOOTER
+======================== */
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  background-color: var(--fondo-principal);
+  border-top: 2px solid var(--texto-oscuro);
+  font-size: 0.9rem;
+}
+
+/* ===============================
+   POPUP - INFORMAR PROBLEMA
+=============================== */
+#popup-problema {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+#popup-problema:not(.oculto) {
+  display: flex;
+}
+
+.popup-contenido {
+  background-color: var(--fondo-bloque);
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 500px;
+  width: 90%;
+  color: var(--texto-oscuro);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+  position: relative;
+  text-align: center;
+}
+
+.popup-contenido textarea {
+  width: 100%;
+  height: 120px;
+  margin-top: 1rem;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: var(--fondo-secundario);
+  color: var(--texto-claro);
+  border: 1px solid var(--elemento-interactivo);
+}
+
+#enviar-problema {
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  background-color: var(--elemento-interactivo);
+  color: var(--texto-claro);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+#enviar-problema:hover {
+  background-color: var(--texto-oscuro);
+}
+
+.cerrar-popup {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+/* ========================
+   RESPONSIVE
+======================== */
+@media (max-width: 768px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  #barra-lateral {
+    position: fixed;
+    left: -220px;
+    top: 0;
+    height: 100vh;
+    width: 220px;
+    background-color: var(--fondo-secundario);
+    transition: left 0.3s ease-in-out;
+    z-index: 20;
+  }
+
+  #barra-lateral.abierto {
+    left: 0;
+  }
+
+  body.menu-abierto::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    height: 100%; width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 15;
+  }
+
+  .header-col.izquierda { display: none; }
+  .header-col.centro {
+    justify-content: flex-start;
+    padding-left: 1rem;
+  }
+  .header-col.derecha {
+    justify-content: flex-end;
+    padding-right: 1rem;
+  }
+}

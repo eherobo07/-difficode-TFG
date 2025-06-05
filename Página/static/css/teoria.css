@@ -1,0 +1,258 @@
+/* ========================
+   PALETA Y FUENTE GENERAL
+======================== */
+:root {
+  --fondo-principal: #4C5760;
+  --fondo-secundario: #93A8AC;
+  --fondo-bloque: #D7CEB2;
+  --elemento-interactivo: #A59E8C;
+  --texto-oscuro: #66635B;
+  --texto-claro: #ffffff;
+  --fuente-principal: 'Inter', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--fuente-principal);
+  background-color: var(--fondo-principal);
+  color: var(--texto-claro);
+  min-height: 100vh;
+  background-image:
+    radial-gradient(circle at 25% 25%, var(--fondo-secundario) 0%, transparent 40%),
+    radial-gradient(circle at 75% 75%, var(--fondo-principal) 0%, transparent 40%);
+  background-size: 400% 400%;
+  animation: ondas 30s ease-in-out infinite;
+}
+
+@keyframes ondas {
+  0%, 100% { background-position: 0% 0%, 100% 100%, 50% 50%; }
+  50% { background-position: 100% 0%, 0% 100%, 50% 30%; }
+}
+
+/* ========================
+   HEADER
+======================== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--fondo-principal);
+  padding: 1rem 2rem;
+  border-bottom: 2px solid var(--texto-oscuro);
+}
+
+.header-col {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-col.izquierda { justify-content: flex-start; }
+
+.header-col.derecha {
+  justify-content: flex-end;
+  gap: 0.7rem;
+  cursor: pointer;
+  position: relative;
+}
+
+#logo {
+  height: 50px;
+}
+
+#icono-perfil {
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
+  border: 2px solid var(--elemento-interactivo);
+  object-fit: cover;
+}
+
+.header-col.izquierda {
+  justify-content: flex-start; 
+  gap: 1rem; 
+}
+
+.btn-volver {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: var(--elemento-interactivo);
+  color: var(--texto-claro);
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  gap: 0.5rem; 
+}
+
+.flecha {
+  font-size: 1.2rem; 
+  transform: rotate(180deg);
+}
+
+.btn-volver:hover {
+  background-color: var(--fondo-secundario);  
+  transform: scale(1.05);  
+}
+
+
+.btn-volver:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+/* ========================
+   MENÚ DESPLEGABLE PERFIL
+======================== */
+#menu-perfil {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  background-color: var(--fondo-bloque);
+  color: var(--texto-oscuro);
+  border: 1px solid var(--texto-oscuro);
+  border-radius: 8px;
+  width: 180px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  z-index: 50;
+}
+
+#menu-perfil ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#menu-perfil li {
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  border-bottom: 1px solid #ccc;
+}
+
+#menu-perfil li:hover {
+  background-color: var(--fondo-secundario);
+}
+
+#menu-perfil.oculto {
+  display: none;
+}
+
+.peligro {
+  color: #D9534F;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.peligro:hover {
+  color: #B52B27; 
+  text-decoration: underline;
+}
+
+/* ========================
+   MAIN - LAYOUT PERFIL
+======================== */
+main.perfil-layout {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch; 
+  padding: 2rem;
+  gap: 3rem;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+
+.perfil-foto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+
+/* ========================
+   CONTENEDOR PDF
+======================== */
+.pdf-container {
+  display: flex;
+  justify-content: center;  
+  align-items: center;       
+  width: 100%;              
+  height: 75vh;              
+  margin-top: 2rem;         
+  overflow: hidden;         
+}
+
+/* Estilos del iframe */
+.pdf-container iframe {
+  width: 80%;                
+  height: 100%;          
+  border: none;              
+  object-fit: contain;        
+  overflow: hidden;          
+  background-color: var(--fondo-bloque);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+}
+
+
+
+
+/* ========================
+   FOOTER
+======================== */
+footer {
+  text-align: center;
+  padding: 2rem;
+  background-color: var(--fondo-principal);
+  border-top: solid var(--texto-oscuro);
+  margin-top: auto;
+  font-size: 0.9rem;
+}
+
+
+/* ========================
+   RESPONSIVE
+======================== */
+@media (max-width: 768px) {
+  main.perfil-layout {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .perfil-datos {
+    width: 100%;
+  }
+  .header-col.izquierda {
+  display: none;
+}
+
+.header-col.centro {
+  justify-content: flex-start;
+  padding-left: 1rem;
+}
+
+.header-col.derecha {
+  justify-content: flex-end;
+  padding-right: 1rem;
+}
+
+}
