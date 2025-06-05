@@ -52,7 +52,6 @@ TFG/
 │ └── ejercicio.html
 ├── app.py
 ├── db_config.py
-├── init_db.sql
 ├── requirements.txt
 └── README.md
 
@@ -86,7 +85,7 @@ pip install -r requirements.txt
 3. **Configura la base de datos**
 
 - Asegúrate de tener MySQL instalado
-- Crea una base de datos (por ejemplo difficode)
+- Importa la base de datos (archivo dump)
 - Ejecuta el script init_db.sql para crear todas las tablas necesarias
 - Asegúrate de configurar correctamente el archivo db_config.py con tus credenciales de MySQL
 
